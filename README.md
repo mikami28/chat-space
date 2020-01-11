@@ -11,10 +11,10 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text| |
 |image|string|| |
 |user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key:true|
+|group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :group
@@ -22,8 +22,16 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|groupname|text|null: false|
-|user_id|inteder|null: false, foreign_key: true|
+|name|string|null: false|
 ### Association
-- belong_to :user
-- has_many :comments
+- has_many :users
+- has_many :messages
+
+## users_groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :group
